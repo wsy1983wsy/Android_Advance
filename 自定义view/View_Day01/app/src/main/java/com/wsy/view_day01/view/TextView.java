@@ -40,5 +40,14 @@ public class TextView extends View {
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+        // 布局的宽高都是由这个方法决定的
+        // 指定控件的宽高，需要测量
+        // 获取宽高的模式
+        int widthMode = MeasureSpec.getMode(widthMeasureSpec);
+        int heightMode = MeasureSpec.getMode(heightMeasureSpec);
+
+        if(widthMode == MeasureSpec.AT_MOST){
+
+        }
     }
 }
