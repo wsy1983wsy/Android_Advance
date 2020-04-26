@@ -10,10 +10,10 @@
     <com.wsy.view_day01.view.TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="@android:color/holo_blue_dark"
-        android:textSize="20sp" />
+        app:inputType="password"
+        app:text="hello"
+        app:textColor="@android:color/red" />
 
-    <com.wsy.view_day01.view.TextView
-        style="@style/defaultTextView" />
+    <com.wsy.view_day01.view.TextView style="@style/defaultTextView" />
 
 </LinearLayout>
