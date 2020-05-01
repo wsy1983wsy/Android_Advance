@@ -4,7 +4,10 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.Rect;
 import android.util.AttributeSet;
+import android.util.TypedValue;
 import android.view.MotionEvent;
 import android.view.View;
 
@@ -15,10 +18,12 @@ import com.wsy.view_day01.R;
 public class TextView extends View {
     //显式的文字
     private String text;
-    //文字的大小
+    //文字的大小,单位为像素
     private int textSize = 15;
     //文字的颜色
     private int textColor = Color.BLACK;
+    // 画笔
+    private Paint paint;
 
     // 在代码中new TextView的时候使用
     // TextView textView = new Text(getActivity());
@@ -44,11 +49,19 @@ public class TextView extends View {
         super(context, attrs, defStyleAttr);
         //获取自定义属性
         TypedArray array = context.obtainStyledAttributes(attrs, R.styleable.TextView);
-        text = array.getString(R.styleable.TextView_text);
-        textColor = array.getColor(R.styleable.TextView_textColor, textColor);
-        textSize = array.getDimensionPixelSize(R.styleable.TextView_textSize, textSize);
+        text = array.getString(R.styleable.TextView_wsytext);
+        textColor = array.getColor(R.styleable.TextView_wsytextColor, textColor);
+        textSize = array.getDimensionPixelSize(R.styleable.TextView_wsytextSize, sp2px(textSize));
         //回收
         array.recycle();
+
+        paint = new Paint();
+        //设置抗锯齿
+        paint.setAntiAlias(true);
+        //设置字体的大小
+        paint.setTextSize(textSize);
+        //设置字体的颜色
+        paint.setColor(textColor);
     }
 
     /**
@@ -66,9 +79,26 @@ public class TextView extends View {
         int widthMode = MeasureSpec.getMode(widthMeasureSpec);
         int heightMode = MeasureSpec.getMode(heightMeasureSpec);
 
+        // 1.确定的值，不需要计算，给多少就是多少
+        int width = MeasureSpec.getSize(widthMeasureSpec);
+        // 2.给的是wrap_content（即模式为MeasureSpec.AT_MOST），需要计算,
         if (widthMode == MeasureSpec.AT_MOST) {
-
+            //计算得到的宽度 与字体的长度有关，字体的大小有关，用画笔测量
+            Rect bounds = new Rect();
+            //获取字体的Rect
+            paint.getTextBounds(text, 0, text.length(), bounds);
+            width = bounds.width();
         }
+        int height = MeasureSpec.getSize(heightMeasureSpec);
+        if (heightMode == MeasureSpec.AT_MOST) {
+            //计算得到的宽度 与字体的长度有关，字体的大小有关，用画笔测量
+            Rect bounds = new Rect();
+            //获取字体的Rect
+            paint.getTextBounds(text, 0, text.length(), bounds);
+            height = bounds.height();
+        }
+        // 设置控件的宽高
+        setMeasuredDimension(width, height);
     }
 
     /**
@@ -79,7 +109,10 @@ public class TextView extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-//        canvas.drawText();
+        //画文字，文字，x， y ，画笔
+        // x为横坐标快开始的位置
+        // y基线的的位置，baseline（基线）
+        canvas.drawText(text, 0, getHeight() / 2, paint);
 //        canvas.drawCircle();
 //        canvas.drawArc();
     }
@@ -104,5 +137,9 @@ public class TextView extends View {
                 break;
         }
         return super.onTouchEvent(event);
+    }
+
+    private int sp2px(int sp) {
+        return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, sp, getResources().getDisplayMetrics();
     }
 }
