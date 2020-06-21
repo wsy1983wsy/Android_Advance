@@ -10,13 +10,12 @@ import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.LinearLayout;
 
 import androidx.annotation.Nullable;
 
 import com.wsy.view_day01.R;
 
-public class TextView extends  LinearLayout{
+public class TextView extends View {
     //显式的文字
     private String text;
     //文字的大小,单位为像素
@@ -125,7 +124,7 @@ public class TextView extends  LinearLayout{
         canvas.drawText(text, 0, baseline, paint);
         setBackgroundColor(Color.WHITE);
         setWillNotDraw(false);
-}
+    }
 
     /**
      * 处理跟用户交互的事件，手指触摸等等

@@ -25,4 +25,11 @@
             <enum name="password" value="3" />
         </attr>
     </declare-styleable>
+    <declare-styleable name="QQStepView">
+        <attr name="outerColor" format="color" />
+        <attr name="innerColor" format="color" />
+        <attr name="stepTextColor" format="color" />
+        <attr name="stepTextSize" format="dimension" />
+        <attr name="borderWidth" format="dimension" />
+    </declare-styleable>
 </resources>
