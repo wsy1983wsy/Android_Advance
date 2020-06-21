@@ -10,12 +10,13 @@ import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.LinearLayout;
 
 import androidx.annotation.Nullable;
 
 import com.wsy.view_day01.R;
 
-public class TextView extends View {
+public class TextView extends  LinearLayout{
     //显式的文字
     private String text;
     //文字的大小,单位为像素
@@ -112,10 +113,19 @@ public class TextView extends View {
         //画文字，文字，x， y ，画笔
         // x为横坐标快开始的位置
         // y基线的的位置，baseline（基线）
-        canvas.drawText(text, 0, getHeight() / 2, paint);
+//        canvas.drawText(text, 0, getHeight() / 2, paint);
 //        canvas.drawCircle();
 //        canvas.drawArc();
-    }
+        //获取基线
+        //参考网址：http://www.imooc.com/article/277490?block_id=tuijian_wz
+        //获得画笔的FontMetrics，用来计算baseLine。因为drawText的y坐标，代表的是绘制的文字的baseLine的位置
+        Paint.FontMetrics fontMetrics = paint.getFontMetrics();
+        //计算出在每格index区域，竖直居中的baseLine值
+        int baseline = (int) ((getHeight() - fontMetrics.bottom - fontMetrics.top) / 2);
+        canvas.drawText(text, 0, baseline, paint);
+        setBackgroundColor(Color.WHITE);
+        setWillNotDraw(false);
+}
 
     /**
      * 处理跟用户交互的事件，手指触摸等等
@@ -140,6 +150,6 @@ public class TextView extends View {
     }
 
     private int sp2px(int sp) {
-        return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, sp, getResources().getDisplayMetrics();
+        return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, sp, getResources().getDisplayMetrics());
     }
 }

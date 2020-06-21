@@ -10,7 +10,6 @@
     <com.wsy.view_day01.view.TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="#0f0"
         app:wsyinputType="password"
         app:wsytext="郑州hello"
         app:wsytextSize="20sp"
