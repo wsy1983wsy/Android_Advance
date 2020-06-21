@@ -31,5 +31,6 @@
         <attr name="stepTextColor" format="color" />
         <attr name="stepTextSize" format="dimension" />
         <attr name="borderWidth" format="dimension" />
+        <attr name="maxStep" format="integer" />
     </declare-styleable>
 </resources>

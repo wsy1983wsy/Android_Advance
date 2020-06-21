@@ -5,6 +5,7 @@ import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.Rect;
 import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.view.View;
@@ -18,6 +19,11 @@ public class QQStepView extends View {
     private int stepTextSize = 18;
     private int stepTextColor = Color.BLUE;
     Paint outPaint;
+    private int maxStep = 10000;
+    private int currentStep;
+    private Paint innerPatin;
+    private Paint textPaint;
+
 
     public QQStepView(Context context) {
         this(context, null);
@@ -39,14 +45,28 @@ public class QQStepView extends View {
         stepTextColor = typedArray.getColor(R.styleable.QQStepView_stepTextColor, stepTextColor);
         borderWidth = (int) typedArray.getDimension(R.styleable.QQStepView_borderWidth, borderWidth);
         stepTextSize = (int) typedArray.getDimension(R.styleable.QQStepView_stepTextSize, stepTextSize);
-
+        maxStep = typedArray.getInt(R.styleable.QQStepView_maxStep, maxStep);
         typedArray.recycle();
         outPaint = new Paint();
         outPaint.setAntiAlias(true);
         outPaint.setStrokeWidth(borderWidth);
         outPaint.setColor(outColor);
-        outPaint.setStyle(Paint.Style.STROKE);
+        outPaint.setStyle(Paint.Style.STROKE);//空心圆弧
         outPaint.setStrokeCap(Paint.Cap.ROUND);
+
+        innerPatin = new Paint();
+        innerPatin.setAntiAlias(true);
+        innerPatin.setStrokeWidth(borderWidth);
+        innerPatin.setColor(innerColor);
+        innerPatin.setStyle(Paint.Style.STROKE);
+        innerPatin.setStrokeCap(Paint.Cap.ROUND);
+
+
+        textPaint = new Paint();
+        textPaint.setAntiAlias(true);
+        textPaint.setColor(innerColor);
+        textPaint.setTextSize(stepTextSize);
+        currentStep = 0;
         //5.onMeasure
         //5.画外圆弧，内圆弧，文字
         //7.其他
@@ -73,8 +93,33 @@ public class QQStepView extends View {
         // 而不是new RectF(0，0, getWidth(), getHeight())
         RectF rectF = new RectF(borderWidth, borderWidth, getWidth() - borderWidth, getHeight() - borderWidth);
         canvas.drawArc(rectF, 135, 270, false, outPaint);
-        //6.2 画内圆弧
+        if (maxStep == 0) {
+            return;
+        }
+        //6.2 画内圆弧,不能写死，百分比，由使用者设置
+        float sweepAngle = (float) currentStep / maxStep;
+        canvas.drawArc(rectF, 135, sweepAngle * 270, false, innerPatin);
         //6.3 画文字
+        String stepText = currentStep + "";
+        Rect bounds = new Rect();
+        //获取字体的Rect
+        textPaint.getTextBounds(stepText, 0, stepText.length(), bounds);
+        int dx = getWidth() / 2 - bounds.width() / 2;
+        Paint.FontMetrics fontMetrics = textPaint.getFontMetrics();
+        //计算出在每格index区域，竖直居中的baseLine值
+        int dy = (int) ((fontMetrics.bottom - fontMetrics.top) / 2 - fontMetrics.bottom);
+//        int baseline = (int) ((bounds.height() - fontMetrics.bottom - fontMetrics.top) / 2);
+        int baseLine = getHeight() / 2 + dy;
+        canvas.drawText(stepText, dx, baseLine, textPaint);
+    }
 
+    public synchronized void setMaxStep(int maxStep) {
+        this.maxStep = maxStep;
+    }
+
+    public synchronized void setCurrentStep(int currentStep) {
+        this.currentStep = currentStep;
+        //重新绘制
+        invalidate();
     }
 }
