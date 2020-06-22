@@ -33,4 +33,9 @@
         <attr name="borderWidth" format="dimension" />
         <attr name="maxStep" format="integer" />
     </declare-styleable>
+
+    <declare-styleable name="ColorTrackTextView">
+        <attr name="originColor" format="color" />
+        <attr name="changeColor" format="color" />
+    </declare-styleable>
 </resources>

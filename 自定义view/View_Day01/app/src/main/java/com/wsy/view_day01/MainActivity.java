@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.wsy.view_day01.activity.ColorTrackActivity;
 import com.wsy.view_day01.activity.CustomTextViewActivity;
 import com.wsy.view_day01.activity.QQStepViewActivity;
 
@@ -24,6 +25,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void showQQStepView(View view) {
         Intent intent = new Intent(this, QQStepViewActivity.class);
+        startActivity(intent);
+    }
+
+    public void showColorTrackTextView(View view) {
+        Intent intent = new Intent(this, ColorTrackActivity.class);
         startActivity(intent);
     }
 }
