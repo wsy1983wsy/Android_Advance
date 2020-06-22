@@ -17,4 +17,16 @@
         app:changeColor="#f00"
         app:originColor="#333333" />
 
+    <Button
+        android:layout_width="wrap_content"
+        android:text="左到右"
+        android:onClick="leftToRight"
+        android:layout_height="wrap_content" />
+
+
+    <Button
+        android:layout_width="wrap_content"
+        android:text="右到左"
+        android:onClick="rightToLeft"
+        android:layout_height="wrap_content" />
 </LinearLayout>
