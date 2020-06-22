@@ -3,6 +3,7 @@ package com.wsy.view_day01.activity;
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.animation.DecelerateInterpolator;
@@ -41,5 +42,10 @@ public class ColorTrackActivity extends Activity {
             }
         });
         valueAnimator.start();
+    }
+
+    public void showViewPager(View view) {
+        Intent intent = new Intent(this, ViewPagerActivity.class);
+        startActivity(intent);
     }
 }

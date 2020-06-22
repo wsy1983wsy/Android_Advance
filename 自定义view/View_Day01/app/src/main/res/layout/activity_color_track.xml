@@ -19,14 +19,21 @@
 
     <Button
         android:layout_width="wrap_content"
-        android:text="左到右"
+        android:layout_height="wrap_content"
         android:onClick="leftToRight"
-        android:layout_height="wrap_content" />
+        android:text="左到右" />
 
 
     <Button
         android:layout_width="wrap_content"
-        android:text="右到左"
+        android:layout_height="wrap_content"
         android:onClick="rightToLeft"
-        android:layout_height="wrap_content" />
+        android:text="右到左" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="showViewPager"
+        android:text="显式Viewpager"
+        android:textAllCaps="false" />
 </LinearLayout>

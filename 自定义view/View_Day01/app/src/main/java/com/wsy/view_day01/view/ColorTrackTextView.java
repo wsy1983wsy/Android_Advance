@@ -17,7 +17,7 @@ public class ColorTrackTextView extends androidx.appcompat.widget.AppCompatTextV
     private Paint mOriginPaint;
     // 1. 实现一个文字两种颜色 - 绘制变色字体的画笔
     private Paint mChangePaint;
-    private float mCurrentProgress = 0.5f;
+    private float mCurrentProgress = 0.0f;
     Direction mDirection = Direction.LEFT_TO_RIGHT;
 
     public enum Direction {
