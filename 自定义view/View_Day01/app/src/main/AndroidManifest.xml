@@ -21,6 +21,7 @@
         <activity android:name=".activity.ColorTrackActivity" />
         <activity android:name=".activity.ViewPagerActivity" />
         <activity android:name=".activity.RatingBarActivity" />
+        <activity android:name=".activity.LetterSideBarActivity" />
     </application>
 
 </manifest>

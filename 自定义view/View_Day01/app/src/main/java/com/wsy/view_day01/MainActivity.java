@@ -8,6 +8,7 @@ import android.view.View;
 
 import com.wsy.view_day01.activity.ColorTrackActivity;
 import com.wsy.view_day01.activity.CustomTextViewActivity;
+import com.wsy.view_day01.activity.LetterSideBarActivity;
 import com.wsy.view_day01.activity.QQStepViewActivity;
 import com.wsy.view_day01.activity.RatingBarActivity;
 
@@ -36,6 +37,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void showRatingBar(View view) {
         Intent intent = new Intent(this, RatingBarActivity.class);
+        startActivity(intent);
+    }
+
+    public void showLetterSideBar(View view) {
+        Intent intent = new Intent(this, LetterSideBarActivity.class);
         startActivity(intent);
     }
 }

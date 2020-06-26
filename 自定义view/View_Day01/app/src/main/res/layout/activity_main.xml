@@ -35,12 +35,21 @@
             android:onClick="showColorTrackTextView"
             android:text="自定义颜色Color TextView"
             android:textAllCaps="false" />
+
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:onClick="showRatingBar"
             android:text="Rating Bar view"
+            android:textAllCaps="false" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:onClick="showLetterSideBar"
+            android:text="Letter Side Bar view"
             android:textAllCaps="false" />
 
     </LinearLayout>
