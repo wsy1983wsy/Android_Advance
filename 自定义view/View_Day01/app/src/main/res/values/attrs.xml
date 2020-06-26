@@ -38,4 +38,9 @@
         <attr name="originColor" format="color" />
         <attr name="changeColor" format="color" />
     </declare-styleable>
+    <declare-styleable name="RatingBarView">
+        <attr name="selectedImage" format="reference" />
+        <attr name="normalImage" format="reference" />
+        <attr name="imageCount" format="integer" />
+    </declare-styleable>
 </resources>

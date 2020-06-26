@@ -20,6 +20,7 @@
         <activity android:name=".activity.QQStepViewActivity" />
         <activity android:name=".activity.ColorTrackActivity" />
         <activity android:name=".activity.ViewPagerActivity" />
+        <activity android:name=".activity.RatingBarActivity" />
     </application>
 
 </manifest>
