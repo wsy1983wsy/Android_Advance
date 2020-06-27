@@ -12,6 +12,7 @@ import com.wsy.view_day01.activity.HeightActivity;
 import com.wsy.view_day01.activity.LetterSideBarActivity;
 import com.wsy.view_day01.activity.QQStepViewActivity;
 import com.wsy.view_day01.activity.RatingBarActivity;
+import com.wsy.view_day01.activity.TagLayoutActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -50,4 +51,11 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, HeightActivity.class);
         startActivity(intent);
     }
+
+    public void showTagLayout(View view) {
+        Intent intent = new Intent(this, TagLayoutActivity.class);
+        startActivity(intent);
+    }
+
+
 }

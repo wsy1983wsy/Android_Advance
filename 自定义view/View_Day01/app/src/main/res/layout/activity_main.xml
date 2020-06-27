@@ -16,6 +16,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
+            android:onClick="showTagLayout"
+            android:text="showTagLayout"
+            android:textAllCaps="false" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
             android:onClick="showCustomTextView"
             android:text="自定义TextView"
             android:textAllCaps="false" />

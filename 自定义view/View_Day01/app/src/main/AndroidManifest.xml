@@ -23,6 +23,7 @@
         <activity android:name=".activity.RatingBarActivity" />
         <activity android:name=".activity.LetterSideBarActivity" />
         <activity android:name=".activity.HeightActivity" />
+        <activity android:name=".activity.TagLayoutActivity" />
     </application>
 
 </manifest>
