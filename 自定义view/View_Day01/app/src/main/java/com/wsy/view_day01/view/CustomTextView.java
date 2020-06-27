@@ -15,7 +15,7 @@ import androidx.annotation.Nullable;
 
 import com.wsy.view_day01.R;
 
-public class TextView extends View {
+public class CustomTextView extends View {
     //显式的文字
     private String text;
     //文字的大小,单位为像素
@@ -27,7 +27,7 @@ public class TextView extends View {
 
     // 在代码中new TextView的时候使用
     // TextView textView = new Text(getActivity());
-    public TextView(Context context) {
+    public CustomTextView(Context context) {
         this(context, null);
     }
 
@@ -38,14 +38,14 @@ public class TextView extends View {
     //        android:layout_height="wrap_content"
     //        android:textColor="@android:color/holo_blue_dark"
     //        android:textSize="20sp" />
-    public TextView(Context context, @Nullable AttributeSet attrs) {
+    public CustomTextView(Context context, @Nullable AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
     // 在布局中，有style时会被调用
     //   <com.wsy.view_day01.view.TextView
     //        style="@style/defaultTextView" />
-    public TextView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+    public CustomTextView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         //获取自定义属性
         TypedArray array = context.obtainStyledAttributes(attrs, R.styleable.TextView);

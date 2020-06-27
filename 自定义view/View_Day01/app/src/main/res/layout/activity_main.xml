@@ -52,5 +52,12 @@
             android:text="Letter Side Bar view"
             android:textAllCaps="false" />
 
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:onClick="showHeightActivity"
+            android:text="ShowHeightActivity"
+            android:textAllCaps="false" />
     </LinearLayout>
 </ScrollView>

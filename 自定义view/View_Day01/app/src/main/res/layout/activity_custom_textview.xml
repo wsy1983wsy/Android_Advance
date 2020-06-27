@@ -7,7 +7,7 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <com.wsy.view_day01.view.TextView
+    <com.wsy.view_day01.view.CustomTextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:wsyinputType="password"
