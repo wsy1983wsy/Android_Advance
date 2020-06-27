@@ -13,6 +13,7 @@ import com.wsy.view_day01.activity.LetterSideBarActivity;
 import com.wsy.view_day01.activity.QQStepViewActivity;
 import com.wsy.view_day01.activity.RatingBarActivity;
 import com.wsy.view_day01.activity.TagLayoutActivity;
+import com.wsy.view_day01.activity.TouchViewActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -57,5 +58,9 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void shwTouchView(View view) {
+        Intent intent = new Intent(this, TouchViewActivity.class);
+        startActivity(intent);
+    }
 
 }

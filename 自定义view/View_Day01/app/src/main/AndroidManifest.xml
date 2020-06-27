@@ -24,6 +24,7 @@
         <activity android:name=".activity.LetterSideBarActivity" />
         <activity android:name=".activity.HeightActivity" />
         <activity android:name=".activity.TagLayoutActivity" />
+        <activity android:name=".activity.TouchViewActivity" />
     </application>
 
 </manifest>
