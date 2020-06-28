@@ -15,9 +15,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
+            android:onClick="showKuGou"
+            android:text="展示酷狗效果"
+            android:textAllCaps="false" />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
             android:onClick="shwTouchView"
             android:text="shwTouchView"
             android:textAllCaps="false" />
+
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

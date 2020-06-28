@@ -9,6 +9,7 @@ import android.view.View;
 import com.wsy.view_day01.activity.ColorTrackActivity;
 import com.wsy.view_day01.activity.CustomTextViewActivity;
 import com.wsy.view_day01.activity.HeightActivity;
+import com.wsy.view_day01.activity.KuGouActivity;
 import com.wsy.view_day01.activity.LetterSideBarActivity;
 import com.wsy.view_day01.activity.QQStepViewActivity;
 import com.wsy.view_day01.activity.RatingBarActivity;
@@ -63,4 +64,8 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void showKuGou(View view) {
+        Intent intent = new Intent(this, KuGouActivity.class);
+        startActivity(intent);
+    }
 }
