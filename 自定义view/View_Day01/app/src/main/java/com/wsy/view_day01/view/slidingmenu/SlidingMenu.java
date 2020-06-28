@@ -3,6 +3,7 @@ package com.wsy.view_day01.view.slidingmenu;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.util.AttributeSet;
+import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.ViewGroup;
 import android.widget.HorizontalScrollView;
@@ -14,8 +15,8 @@ public class SlidingMenu extends HorizontalScrollView {
     private ViewGroup menuContainer;
     private ViewGroup contentContainer;
     private int mMenuWidth;
-
-    private Context mContext;
+    GestureDetector gestureDetector;
+    boolean menuIsOpened = false;
 
     public SlidingMenu(Context context) {
         this(context, null);
@@ -32,7 +33,34 @@ public class SlidingMenu extends HorizontalScrollView {
         float rightMargin = array.getDimension(R.styleable.SlidingMenu_menuRightMargin, SizeUtil.dp2px(context, 50));
         mMenuWidth = (int) (SizeUtil.getScreenWidth(context) - rightMargin);
         array.recycle();
+        gestureDetector = new GestureDetector(context, gestureListener);
     }
+
+    private GestureDetector.OnGestureListener gestureListener = new GestureDetector.SimpleOnGestureListener() {
+        @Override
+        public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
+            // Bug  判断左右还是上下   只有左右快速滑动才切换
+            if (Math.abs(velocityY) > Math.abs(velocityX)) {
+                // 代表上下快速划  这个时候不做处理
+                return super.onFling(e1, e2, velocityX, velocityX);
+            }
+            //只关注快速滑动，只要快速滑动就会回调
+            //
+            if (menuIsOpened) {
+                if (velocityX < 0) {
+                    closeMenu();
+                    return true;
+                }
+            } else {
+                if (velocityX > 0) {
+                    openMenu();
+                    return true;
+                }
+            }
+
+            return super.onFling(e1, e2, velocityX, velocityX);
+        }
+    };
     //1.宽度不对（乱套了），指定宽高
 
     /**
@@ -66,8 +94,30 @@ public class SlidingMenu extends HorizontalScrollView {
         scrollTo(mMenuWidth, 0);
     }
 
+    private boolean isIntercept;
+
+    @Override
+    public boolean onInterceptTouchEvent(MotionEvent ev) {
+        isIntercept = false;
+        if (menuIsOpened) {
+            float pointX = ev.getX();
+            if (pointX > mMenuWidth) {
+                closeMenu();
+                isIntercept = true;
+                return true;
+            }
+        }
+        return super.onInterceptTouchEvent(ev);
+    }
+
     @Override
     public boolean onTouchEvent(MotionEvent ev) {
+        if (isIntercept) {//如果拦截了事件，则不做下面的操作
+            return true;
+        }
+        if (gestureDetector.onTouchEvent(ev)) {//快速滑动触发，下面就不再执行了
+            return true;
+        }
         if (ev.getAction() == MotionEvent.ACTION_UP) {
             //手指抬起
             int scrollX = getScrollX();
@@ -89,6 +139,7 @@ public class SlidingMenu extends HorizontalScrollView {
      */
     private void closeMenu() {
         smoothScrollTo(mMenuWidth, 0);
+        menuIsOpened = false;
     }
 
     /**
@@ -96,6 +147,7 @@ public class SlidingMenu extends HorizontalScrollView {
      */
     private void openMenu() {
         smoothScrollTo(0, 0);
+        menuIsOpened = true;
     }
 
     //4. 处理有点的缩放，左边的缩放和透明度，需要不断的获取当前滚动的位置
