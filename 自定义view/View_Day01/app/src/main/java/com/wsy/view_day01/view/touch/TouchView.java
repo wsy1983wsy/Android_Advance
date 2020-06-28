@@ -27,4 +27,10 @@ public class TouchView extends View {
         Log.d("TouchView", "onTouch: " + event.getAction());
         return super.onTouchEvent(event);
     }
+
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent event) {
+        Log.d("TouchView", "dispatchTouchEvent: " + event.getAction());
+        return super.dispatchTouchEvent(event);
+    }
 }

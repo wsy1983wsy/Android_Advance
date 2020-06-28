@@ -25,11 +25,11 @@ public class TouchViewActivity extends Activity {
                 return false;
             }
         });
-        touchView.setOnClickListener(new View.OnClickListener() {
+        /*touchView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Log.d("TouchViewActivity", "click");
             }
-        });
+        });*/
     }
 }
