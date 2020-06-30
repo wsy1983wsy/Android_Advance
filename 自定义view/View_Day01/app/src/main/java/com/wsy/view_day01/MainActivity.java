@@ -11,6 +11,7 @@ import com.wsy.view_day01.activity.CustomTextViewActivity;
 import com.wsy.view_day01.activity.HeightActivity;
 import com.wsy.view_day01.activity.KuGouActivity;
 import com.wsy.view_day01.activity.LetterSideBarActivity;
+import com.wsy.view_day01.activity.QQ6SlidingMenuActivity;
 import com.wsy.view_day01.activity.QQStepViewActivity;
 import com.wsy.view_day01.activity.RatingBarActivity;
 import com.wsy.view_day01.activity.TagLayoutActivity;
@@ -66,6 +67,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void showKuGou(View view) {
         Intent intent = new Intent(this, KuGouActivity.class);
+        startActivity(intent);
+    }
+
+    public void showQQ6(View view) {
+        Intent intent = new Intent(this, QQ6SlidingMenuActivity.class);
         startActivity(intent);
     }
 }
