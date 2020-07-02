@@ -27,6 +27,7 @@
         <activity android:name=".activity.TouchViewActivity" />
         <activity android:name=".activity.KuGouActivity" />
         <activity android:name=".activity.QQ6SlidingMenuActivity" />
+        <activity android:name=".activity.ErShouCheActivity" />
     </application>
 
 </manifest>

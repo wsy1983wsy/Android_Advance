@@ -8,6 +8,7 @@ import android.view.View;
 
 import com.wsy.view_day01.activity.ColorTrackActivity;
 import com.wsy.view_day01.activity.CustomTextViewActivity;
+import com.wsy.view_day01.activity.ErShouCheActivity;
 import com.wsy.view_day01.activity.HeightActivity;
 import com.wsy.view_day01.activity.KuGouActivity;
 import com.wsy.view_day01.activity.LetterSideBarActivity;
@@ -74,4 +75,10 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, QQ6SlidingMenuActivity.class);
         startActivity(intent);
     }
+
+    public void showErshouChe(View view) {
+        Intent intent = new Intent(this, ErShouCheActivity.class);
+        startActivity(intent);
+    }
+
 }
