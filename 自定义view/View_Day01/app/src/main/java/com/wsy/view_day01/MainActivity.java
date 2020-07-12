@@ -17,6 +17,7 @@ import com.wsy.view_day01.activity.QQStepViewActivity;
 import com.wsy.view_day01.activity.RatingBarActivity;
 import com.wsy.view_day01.activity.TagLayoutActivity;
 import com.wsy.view_day01.activity.TouchViewActivity;
+import com.wsy.view_day01.paint.PaintActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -81,4 +82,8 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void showPaint(View view){
+        Intent intent = new Intent(this, PaintActivity.class);
+        startActivity(intent);
+    }
 }

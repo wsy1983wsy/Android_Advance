@@ -28,6 +28,7 @@
         <activity android:name=".activity.KuGouActivity" />
         <activity android:name=".activity.QQ6SlidingMenuActivity" />
         <activity android:name=".activity.ErShouCheActivity" />
+        <activity android:name=".paint.PaintActivity" />
     </application>
 
 </manifest>
