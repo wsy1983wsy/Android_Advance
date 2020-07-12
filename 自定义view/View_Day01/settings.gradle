@@ -1,3 +1,4 @@
+include ':Animator'
 include ':CustomEvent'
 rootProject.name='View_Day01'
 include ':app'

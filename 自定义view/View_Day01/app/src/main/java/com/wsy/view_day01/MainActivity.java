@@ -2,10 +2,12 @@ package com.wsy.view_day01;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.wsy.view_day01.activity.AnimatorActivity;
 import com.wsy.view_day01.activity.ColorTrackActivity;
 import com.wsy.view_day01.activity.CustomTextViewActivity;
 import com.wsy.view_day01.activity.ErShouCheActivity;
@@ -82,8 +84,13 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void showPaint(View view){
+    public void showPaint(View view) {
         Intent intent = new Intent(this, PaintActivity.class);
+        startActivity(intent);
+    }
+
+    public void showAnimator(View view) {
+        Intent intent = new Intent(this, AnimatorActivity.class);
         startActivity(intent);
     }
 }
