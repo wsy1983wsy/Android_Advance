@@ -31,6 +31,7 @@
         <activity android:name=".paint.PaintActivity" />
         <activity android:name=".activity.AnimatorActivity" />
         <activity android:name=".activity.ui.adapter.AdapterActivity" />
+        <activity android:name=".activity.ui.adapter.PercentActivity" />
     </application>
 
 </manifest>

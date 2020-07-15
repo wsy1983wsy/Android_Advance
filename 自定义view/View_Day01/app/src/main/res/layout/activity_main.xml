@@ -16,6 +16,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
+            android:onClick="showUiPercent"
+            android:text="显式百分比UI"
+            android:textAllCaps="false" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
             android:onClick="showUiAdapter"
             android:text="屏幕适配"
             android:textAllCaps="false" />
