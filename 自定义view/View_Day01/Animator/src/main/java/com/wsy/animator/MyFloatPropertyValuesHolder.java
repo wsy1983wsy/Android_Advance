@@ -24,7 +24,7 @@ public class MyFloatPropertyValuesHolder {
         String theRest = propertyName.substring(1);
         String methodName = "set" + firstLetter + theRest;
         try {
-            setter = View.class.getMethod(methodName, float.class);
+            setter = target.get().getClass().getMethod(methodName, float.class);
         } catch (NoSuchMethodException e) {
             e.printStackTrace();
         }
