@@ -19,6 +19,7 @@ import com.wsy.view_day01.activity.QQStepViewActivity;
 import com.wsy.view_day01.activity.RatingBarActivity;
 import com.wsy.view_day01.activity.TagLayoutActivity;
 import com.wsy.view_day01.activity.TouchViewActivity;
+import com.wsy.view_day01.activity.ui.adapter.AdapterActivity;
 import com.wsy.view_day01.paint.PaintActivity;
 
 public class MainActivity extends AppCompatActivity {
@@ -91,6 +92,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void showAnimator(View view) {
         Intent intent = new Intent(this, AnimatorActivity.class);
+        startActivity(intent);
+    }
+
+    public void showUiAdapter(View view) {
+        Intent intent = new Intent(this, AdapterActivity.class);
         startActivity(intent);
     }
 }

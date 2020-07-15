@@ -30,6 +30,7 @@
         <activity android:name=".activity.ErShouCheActivity" />
         <activity android:name=".paint.PaintActivity" />
         <activity android:name=".activity.AnimatorActivity" />
+        <activity android:name=".activity.ui.adapter.AdapterActivity" />
     </application>
 
 </manifest>
