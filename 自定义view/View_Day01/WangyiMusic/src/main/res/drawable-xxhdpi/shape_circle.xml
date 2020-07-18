@@ -1,4 +1,3 @@
-
 <shape xmlns:android="http://schemas.android.com/apk/res/android"
     android:shape="rectangle">
     <!-- rectangle表示为矩形 -->
@@ -9,14 +8,12 @@
     <!-- 边框的颜色和粗细 -->
     <stroke
         android:width="1dp"
-        android:color="#d5d5d5"
-        />
+        android:color="#d5d5d5" />
     <!-- android:radius 圆角的半径 -->
     <corners
-        android:topLeftRadius="8dp"
-        android:topRightRadius="8dp"
-        android:bottomRightRadius="0dp"
         android:bottomLeftRadius="0dp"
-        />
+        android:bottomRightRadius="0dp"
+        android:topLeftRadius="8dp"
+        android:topRightRadius="8dp" />
 
 </shape>

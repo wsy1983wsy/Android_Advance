@@ -28,18 +28,20 @@ public class StatusBarUtil {
     }
 
     public static void setStateBar(Activity activity, View toolBar) {
-//问题
+        //问题
         setTranslateStateBar(activity);
         ViewGroup decorView = (ViewGroup) activity.getWindow().getDecorView();
 
         int count = decorView.getChildCount();
         //判断是否已经添加了statusBarView
         if (count > 0 && decorView.getChildAt(count - 1) instanceof StatusBarView) {
-            decorView.getChildAt(count - 1).setBackgroundColor(Color.argb(0, 0, 0, 0));
+            decorView.getChildAt(count - 1)
+                    .setBackgroundColor(Color.argb(0, 0, 0, 0));
             return;
         }
-//        decoeView  View    toolBar  改变 margin
+        // decoeView  View    toolBar  改变 margin
         // 绘制一个和状态栏一样高的矩形
+        //DecorView是一个FrameLayout，新添加的view放在顶部
         StatusBarView statusBarView = new StatusBarView(activity);
         LinearLayout.LayoutParams params =
                 new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, UIUtils.getInstance().getSystemBarHeight(activity));
@@ -51,6 +53,5 @@ public class StatusBarUtil {
             ViewGroup.MarginLayoutParams layoutParams = (ViewGroup.MarginLayoutParams) toolBar.getLayoutParams();
             layoutParams.setMargins(0, UIUtils.getInstance().getSystemBarHeight(activity), 0, 0);
         }
-
     }
 }
