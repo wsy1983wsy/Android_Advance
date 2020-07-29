@@ -42,6 +42,7 @@
         <activity android:name=".activity.ui.adapter.AdapterActivity" />
         <activity android:name=".activity.ui.adapter.PercentActivity" />
         <activity android:name=".activity.CarAnimationActivity" />
+        <activity android:name=".activity.CustomRecycleViewActivity" />
     </application>
 
 </manifest>

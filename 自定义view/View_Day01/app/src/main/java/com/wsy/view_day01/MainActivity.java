@@ -10,6 +10,7 @@ import android.view.View;
 import com.wsy.view_day01.activity.AnimatorActivity;
 import com.wsy.view_day01.activity.CarAnimationActivity;
 import com.wsy.view_day01.activity.ColorTrackActivity;
+import com.wsy.view_day01.activity.CustomRecycleViewActivity;
 import com.wsy.view_day01.activity.CustomTextViewActivity;
 import com.wsy.view_day01.activity.ErShouCheActivity;
 import com.wsy.view_day01.activity.HeightActivity;
@@ -23,6 +24,7 @@ import com.wsy.view_day01.activity.TouchViewActivity;
 import com.wsy.view_day01.activity.ui.adapter.AdapterActivity;
 import com.wsy.view_day01.activity.ui.adapter.PercentActivity;
 import com.wsy.view_day01.paint.PaintActivity;
+import com.wsy.view_day01.view.recycleview.CustomRecycleView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -110,6 +112,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void showAnimationCar(View view) {
         Intent intent = new Intent(this, CarAnimationActivity.class);
+        startActivity(intent);
+    }
+
+    public void showCustomRecycleView(View view) {
+        Intent intent = new Intent(this, CustomRecycleViewActivity.class);
         startActivity(intent);
     }
 }
