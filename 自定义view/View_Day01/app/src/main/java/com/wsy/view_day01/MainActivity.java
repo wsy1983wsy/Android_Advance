@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.wsy.view_day01.activity.AnimatorActivity;
+import com.wsy.view_day01.activity.CarAnimationActivity;
 import com.wsy.view_day01.activity.ColorTrackActivity;
 import com.wsy.view_day01.activity.CustomTextViewActivity;
 import com.wsy.view_day01.activity.ErShouCheActivity;
@@ -104,6 +105,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void showUiPercent(View view) {
         Intent intent = new Intent(this, PercentActivity.class);
+        startActivity(intent);
+    }
+
+    public void showAnimationCar(View view) {
+        Intent intent = new Intent(this, CarAnimationActivity.class);
         startActivity(intent);
     }
 }

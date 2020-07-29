@@ -16,6 +16,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
+            android:onClick="showAnimationCar"
+            android:text="显式动画小车"
+            android:textAllCaps="false" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
             android:onClick="showUiPercent"
             android:text="显式百分比UI"
             android:textAllCaps="false" />

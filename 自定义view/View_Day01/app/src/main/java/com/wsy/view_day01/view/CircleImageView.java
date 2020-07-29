@@ -18,6 +18,10 @@ import android.net.Uri;
 import android.util.AttributeSet;
 import android.widget.ImageView;
 
+import androidx.annotation.ColorInt;
+import androidx.annotation.ColorRes;
+import androidx.annotation.DrawableRes;
+
 import com.wsy.view_day01.R;
 
 public class CircleImageView extends ImageView {

@@ -41,6 +41,7 @@
         <activity android:name=".activity.AnimatorActivity" />
         <activity android:name=".activity.ui.adapter.AdapterActivity" />
         <activity android:name=".activity.ui.adapter.PercentActivity" />
+        <activity android:name=".activity.CarAnimationActivity" />
     </application>
 
 </manifest>
