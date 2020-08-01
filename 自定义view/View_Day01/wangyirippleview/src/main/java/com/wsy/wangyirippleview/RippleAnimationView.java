@@ -83,8 +83,8 @@ public class RippleAnimationView extends RelativeLayout {
 
         RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(UIUtils.getInstance().getWidth(radius + strokeWidth), UIUtils.getInstance().getHeight(radius + strokeWidth));
         layoutParams.addRule(CENTER_IN_PARENT, TRUE);
-//        float maxScale = UIUtils.displayMetricsWidth / (float) (2 * UIUtils.getInstance().getWidth(radius + strokeWidth));
-        float maxScale = 10;
+        float maxScale = UIUtils.displayMetricsWidth / (float) (UIUtils.getInstance().getWidth(radius + strokeWidth));
+//        float maxScale = 10;
         for (int i = 0; i < 4; i++) {
             //实例化一个水波纹  view
             RippleCircleView rippleCircleView = new RippleCircleView(this);
