@@ -18,21 +18,22 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         UIUtils.getInstance(this);
-        setContentView(R.layout.activity_main);
-
-        imageView = (ImageView) findViewById(R.id.ImageView);
-        ViewCalculateUtil.setViewLayoutParam(imageView, 168, 168, 0, 0, 0, 0);
-        rippleAnimationView = (RippleAnimationView) findViewById(R.id.layout_RippleAnimation);
-
-        imageView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (rippleAnimationView.isPlayingAnimation()) {
-                    rippleAnimationView.stopRippleAnimation();
-                } else {
-                    rippleAnimationView.startRippleAnimationPlay();
-                }
-            }
-        });
+        setContentView(R.layout.activity_main1);
+//        setContentView(R.layout.activity_main);
+//
+//        imageView = (ImageView) findViewById(R.id.ImageView);
+//        ViewCalculateUtil.setViewLayoutParam(imageView, 168, 168, 0, 0, 0, 0);
+//        rippleAnimationView = (RippleAnimationView) findViewById(R.id.layout_RippleAnimation);
+//
+//        imageView.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                if (rippleAnimationView.isPlayingAnimation()) {
+//                    rippleAnimationView.stopRippleAnimation();
+//                } else {
+//                    rippleAnimationView.startRippleAnimationPlay();
+//                }
+//            }
+//        });
     }
 }
