@@ -175,3 +175,4 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+NDK/*/cmake-build-debug/*
