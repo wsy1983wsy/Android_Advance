@@ -1,3 +1,4 @@
+include ':player'
 include ':wangyirippleview'
 include ':WangyiMusic'
 include ':Animator'
