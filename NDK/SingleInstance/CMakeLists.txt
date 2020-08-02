@@ -3,4 +3,4 @@ project(SingleInstance)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(SingleInstance main.cpp Student.cpp Student.h Test.cpp Test.h)
+add_executable(SingleInstance main.cpp Student.cpp Student.h Test.cpp Test.h Parent.cpp Parent.h)
