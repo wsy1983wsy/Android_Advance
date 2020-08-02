@@ -4,6 +4,16 @@
 #include "map"
 
 using namespace std;
+namespace first_namespace {
+void func() {
+  cout << "first" << endl;
+}
+}
+namespace second_namespace {
+void func() {
+  cout << "second" << endl;
+}
+}
 int main() {
   const char* a = "123";
   char* b = const_cast<char*>(a);
@@ -37,5 +47,17 @@ int main() {
   map<int, string> map2 = {{1, "A"}, {2, "B"}};
   map1.insert({1, "a"});
 
+  first_namespace::func();
+  second_namespace::func();
+
+  int i = 17;
+  int* p = &i;//指针
+  cout << "指针值" << *p << endl;
+  int& r = i;//引用，不能变，创建时时必须设置值
+  cout << "引用值" << r << endl;
+
+  int testB = 10;
+  r = testB;
+  cout << "引用值" << r << " i:" << i << endl;
   return 0;
 }
