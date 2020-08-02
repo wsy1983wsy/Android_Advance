@@ -22,10 +22,10 @@ import java.util.List;
 
 import jp.wasabeef.glide.transformations.BlurTransformation;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements MusicListener {
     private List<Integer> musicDatas = new ArrayList<>();
     private BackgourndAnimationRelativeLayout backgourndAnimationRelativeLayout;
-    private int index;
+    private int currentIndex;
     DiscView discView;
 
     @Override
@@ -36,15 +36,25 @@ public class MainActivity extends AppCompatActivity {
         musicDatas.add(R.raw.ic_music1);
         musicDatas.add(R.raw.ic_music2);
         musicDatas.add(R.raw.ic_music3);
+        musicDatas.add(R.raw.ic_music1);
+        musicDatas.add(R.raw.ic_music2);
+        musicDatas.add(R.raw.ic_music3);
+        musicDatas.add(R.raw.ic_music1);
+        musicDatas.add(R.raw.ic_music2);
+        musicDatas.add(R.raw.ic_music3);
+        musicDatas.add(R.raw.ic_music1);
+        musicDatas.add(R.raw.ic_music2);
+        musicDatas.add(R.raw.ic_music3);
         backgourndAnimationRelativeLayout = findViewById(R.id.rootLayout);
         discView = findViewById(R.id.discview);
-        index = 0;
+        discView.setMusicListener(this);
+        currentIndex = 0;
         findViewById(R.id.ivPlayOrPause).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 Glide.with(MainActivity.this)
-                        .load(musicDatas.get(index))
+                        .load(musicDatas.get(currentIndex))
                         .transition(DrawableTransitionOptions.withCrossFade(500))
                         .apply(RequestOptions.bitmapTransform(new BlurTransformation(200, 3)))
                         .into(new SimpleTarget<Drawable>() {
@@ -53,9 +63,9 @@ public class MainActivity extends AppCompatActivity {
                                 backgourndAnimationRelativeLayout.setForeground(resource);
                             }
                         });
-                index++;
-                if (index >= musicDatas.size()) {
-                    index = 0;
+                currentIndex++;
+                if (currentIndex >= musicDatas.size()) {
+                    currentIndex = 0;
                 }
             }
         });
@@ -65,5 +75,20 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         discView.setMusicDatas(musicDatas);
+    }
+
+    @Override
+    public void onMusicChanged(int index) {
+        this.currentIndex = index;
+        Glide.with(MainActivity.this)
+                .load(musicDatas.get(currentIndex))
+                .transition(DrawableTransitionOptions.withCrossFade(500))
+                .apply(RequestOptions.bitmapTransform(new BlurTransformation(200, 3)))
+                .into(new SimpleTarget<Drawable>() {
+                    @Override
+                    public void onResourceReady(@NonNull Drawable resource, @Nullable Transition<? super Drawable> transition) {
+                        backgourndAnimationRelativeLayout.setForeground(resource);
+                    }
+                });
     }
 }
