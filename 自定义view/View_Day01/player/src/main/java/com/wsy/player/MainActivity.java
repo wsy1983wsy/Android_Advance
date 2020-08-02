@@ -13,7 +13,9 @@ import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
 import com.bumptech.glide.request.RequestOptions;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.bumptech.glide.request.transition.Transition;
+import com.wsy.player.ui.UIUtils;
 import com.wsy.player.view.BackgourndAnimationRelativeLayout;
+import com.wsy.player.view.DiscView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,15 +26,18 @@ public class MainActivity extends AppCompatActivity {
     private List<Integer> musicDatas = new ArrayList<>();
     private BackgourndAnimationRelativeLayout backgourndAnimationRelativeLayout;
     private int index;
+    DiscView discView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        UIUtils.getInstance(this);
         setContentView(R.layout.activity_main);
         musicDatas.add(R.raw.ic_music1);
         musicDatas.add(R.raw.ic_music2);
         musicDatas.add(R.raw.ic_music3);
         backgourndAnimationRelativeLayout = findViewById(R.id.rootLayout);
+        discView = findViewById(R.id.discview);
         index = 0;
         findViewById(R.id.ivPlayOrPause).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -54,5 +59,11 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        discView.setMusicDatas(musicDatas);
     }
 }
