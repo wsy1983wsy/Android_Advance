@@ -1,9 +1,5 @@
-package com.wsy.design.pattern;
-
-import com.wsy.design.pattern.factory.*;
-
-public class Main {
-
+package com.wsy.design.pattern.factory;
+public class FactoryMain {
     public static void main(String[] args) {
         // write your code here
         //常规方法
