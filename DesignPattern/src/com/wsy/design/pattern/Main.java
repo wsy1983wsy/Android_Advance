@@ -1,9 +1,6 @@
 package com.wsy.design.pattern;
 
-import com.wsy.design.pattern.factory.Api;
-import com.wsy.design.pattern.factory.ApiImpl;
-import com.wsy.design.pattern.factory.SimpleFactory;
-import com.wsy.design.pattern.factory.UserInfo;
+import com.wsy.design.pattern.factory.*;
 
 public class Main {
 
@@ -14,7 +11,16 @@ public class Main {
         UserInfo userInfo = api.createUser();
 
         // 简单工厂，降低了模块间的耦合度
-        Api simpleApi  = SimpleFactory.createApi();
+        Api simpleApi = SimpleFactory.createApi();
         UserInfo userInfo1 = simpleApi.createUser();
+
+        //根据参数，生成不同的Api
+        Api simpleA = ParamFactory.createApi(1);
+        userInfo1 = simpleA.createUser();
+
+        Api simpleB = ParamFactory.createApi(2);
+        userInfo1 = simpleB.createUser();
+
+        //根据配置文件
     }
 }
