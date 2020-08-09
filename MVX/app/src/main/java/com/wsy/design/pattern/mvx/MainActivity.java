@@ -6,13 +6,14 @@ import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.os.SystemClock;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.wsy.design.pattern.mvx.bean.ImageBean;
 
-public class MainActivity extends AppCompatActivity implements Callback{
+public class MainActivity extends AppCompatActivity implements Callback {
 
     private ImageView imageView;
     private final static String PATH = "http://a2.att.hudong.com/36/48/19300001357258133412489354717.jpg";
@@ -31,14 +32,21 @@ public class MainActivity extends AppCompatActivity implements Callback{
             return false;
         }
     });
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         imageView = findViewById(R.id.iv_image);
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                SystemClock.sleep(50000);
+            }
+        }).start();
     }
 
-    public void getImage(View view){
+    public void getImage(View view) {
         ImageBean imageBean = new ImageBean();
         imageBean.setUrl(PATH);
         new ImageDownloader().down(this, imageBean);
