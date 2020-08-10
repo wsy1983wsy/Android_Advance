@@ -4,6 +4,7 @@ import com.wsy.design.pattern.mvp2.model.BaseEntity;
 
 // 将Model层、View层、Presenter层协商的共同业务，封装成接口
 // 契约、合同
+// 真正干活的是在Contract中
 public interface LoginContract {
     interface Model {
         // Model层子类完成方法的具体实现----------------2
