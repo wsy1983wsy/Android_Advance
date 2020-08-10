@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
 //                SystemClock.sleep(10000);
 //                message.what = 1;
 //                if (handler1 != null) {
-//                    handler1.sendMessage(message);
+                   handler1.sendMessage(message);
 //                }
 
 //                handler1.sendMessageDelayed(message, 10000);

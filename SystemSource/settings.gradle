@@ -1,3 +1,4 @@
+include ':customhandler'
 include ':handlersample'
 include ':app'
 rootProject.name = "SystemSource"
