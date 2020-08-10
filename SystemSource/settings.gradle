@@ -1,0 +1,3 @@
+include ':handlersample'
+include ':app'
+rootProject.name = "SystemSource"
