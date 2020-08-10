@@ -11,6 +11,9 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/bindera" />
+            <option value="$PROJECT_DIR$/binderb" />
+            <option value="$PROJECT_DIR$/binderdemo" />
             <option value="$PROJECT_DIR$/customhandler" />
             <option value="$PROJECT_DIR$/handlersample" />
           </set>

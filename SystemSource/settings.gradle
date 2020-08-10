@@ -1,3 +1,6 @@
+include ':binderb'
+include ':bindera'
+include ':binderdemo'
 include ':customhandler'
 include ':handlersample'
 include ':app'
