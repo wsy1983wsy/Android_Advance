@@ -1,0 +1,4 @@
+include ':arouter_api'
+include ':arouter_processor'
+include ':arouter_annoation'
+include ':app', ':common', ':order', ':personal'

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/app.iml" group="组件化模块间交互/app" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/arouter_annoation/arouter_annoation.iml" filepath="$PROJECT_DIR$/.idea/modules/arouter_annoation/arouter_annoation.iml" group="组件化模块间交互/arouter_annoation" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/arouter_api/arouter_api.iml" filepath="$PROJECT_DIR$/.idea/modules/arouter_api/arouter_api.iml" group="组件化模块间交互/arouter_api" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/arouter_processor/arouter_processor.iml" filepath="$PROJECT_DIR$/.idea/modules/arouter_processor/arouter_processor.iml" group="组件化模块间交互/arouter_processor" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/common/common.iml" filepath="$PROJECT_DIR$/.idea/modules/common/common.iml" group="组件化模块间交互/common" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/order/order.iml" filepath="$PROJECT_DIR$/.idea/modules/order/order.iml" group="组件化模块间交互/order" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/personal/personal.iml" filepath="$PROJECT_DIR$/.idea/modules/personal/personal.iml" group="组件化模块间交互/personal" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/组件化模块间交互.iml" filepath="$PROJECT_DIR$/.idea/modules/组件化模块间交互.iml" group="组件化模块间交互" />
+    </modules>
+  </component>
+</project>
