@@ -11,4 +11,9 @@
         android:layout_height="wrap_content"
         android:text="Hello World!" />
 
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="jumpView"
+        android:text="跳转到第二个Activity" />
 </LinearLayout>

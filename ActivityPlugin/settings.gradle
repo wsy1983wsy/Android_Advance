@@ -1,0 +1,4 @@
+include ':plugin_package'
+include ':standard'
+include ':app'
+rootProject.name = "ActivityPlugin"

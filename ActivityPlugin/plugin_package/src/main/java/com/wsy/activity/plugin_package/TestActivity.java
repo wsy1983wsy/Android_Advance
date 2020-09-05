@@ -1,7 +1,8 @@
 package com.wsy.activity.plugin_package;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
+
+import androidx.annotation.Nullable;
 
 public class TestActivity extends BaseActivity {
 
