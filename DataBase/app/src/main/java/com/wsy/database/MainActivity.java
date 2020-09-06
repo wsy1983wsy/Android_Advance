@@ -11,6 +11,7 @@ import com.wsy.database.db.BaseDaoFactory;
 import com.wsy.database.db.UserDao;
 import com.wsy.database.subdb.BaseDaoSubFactory;
 import com.wsy.database.subdb.PhotoDao;
+import com.wsy.database.update.UpdateManager;
 
 import java.util.Date;
 
@@ -119,5 +120,15 @@ public class MainActivity extends AppCompatActivity {
                 photoDao.insert(photo);
             }
         });
+
+
+        findViewById(R.id.newVersion).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                UpdateManager updateManager = new UpdateManager();
+                updateManager.startUpdateDb(MainActivity.this);
+            }
+        });
+
     }
 }
