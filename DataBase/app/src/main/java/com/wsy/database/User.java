@@ -9,6 +9,19 @@ public class User {
     private Integer id;
     private String name;
     private String password;
+    private Integer status;
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
+    }
+
+    public User() {
+
+    }
 
     public User(Integer id, String name, String password) {
         this.id = id;

@@ -4,16 +4,26 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import com.wsy.database.db.BaseDao;
 import com.wsy.database.db.BaseDaoFactory;
+import com.wsy.database.db.UserDao;
+import com.wsy.database.subdb.BaseDaoSubFactory;
+import com.wsy.database.subdb.PhotoDao;
+
+import java.util.Date;
 
 public class MainActivity extends AppCompatActivity {
+
+    int i = 0;
+    UserDao userDao;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        userDao = BaseDaoFactory.getInstance().getBaseDao(UserDao.class, User.class);
         initView();
     }
 
@@ -22,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.insert).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                BaseDao baseDao = BaseDaoFactory.getInstance().getBaseDao(User.class);
+                BaseDao baseDao = BaseDaoFactory.getInstance().getBaseDao(UserDao.class, User.class);
                 baseDao.insert(new User(1, "netease1", "111"));
                 baseDao.insert(new User(2, "netease2", "111"));
                 baseDao.insert(new User(3, "netease3", "111"));
@@ -81,6 +91,32 @@ public class MainActivity extends AppCompatActivity {
 //                User where = new User();
 //                where.setName("netease111111");
 //                orderDao.delete(where);
+            }
+        });
+
+
+        findViewById(R.id.login).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // 服务器返回的信息
+                User user = new User();
+                user.setName("netease" + (i++));
+                user.setPassword("154657567");
+                user.setId(i);
+                // 数据插入
+                userDao.insert(user);
+                Toast.makeText(MainActivity.this, "执行成功", Toast.LENGTH_LONG).show();
+            }
+        });
+
+        findViewById(R.id.subInsert).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Photo photo = new Photo();
+                photo.setPath("/data/data/xxx.jpg");
+                photo.setTime(new Date().toString());
+                PhotoDao photoDao = BaseDaoSubFactory.getInstance().getBaseDao(PhotoDao.class, Photo.class);
+                photoDao.insert(photo);
             }
         });
     }
