@@ -32,3 +32,32 @@ OKHttp的线程池：
     return executorService;
   }
   分析结果，OKHttp采用的是线程池的缓存方案 + 线程工厂
+
+使用的设计模式：
+  构建者模式 ，OKHttpClient Request 都是用了构建者模式
+  责任链模式：
+     final class AsyncCall extends NamedRunnable {
+          @Override protected void execute() {
+                Response response = getResponseWithInterceptorChain();
+          }
+     }
+通过getResponseWithInterceptorChain获取到Response
+  Response getResponseWithInterceptorChain() throws IOException {
+    // Build a full stack of interceptors.
+    List<Interceptor> interceptors = new ArrayList<>();
+    interceptors.addAll(client.interceptors());
+    interceptors.add(retryAndFollowUpInterceptor);
+    interceptors.add(new BridgeInterceptor(client.cookieJar()));
+    interceptors.add(new CacheInterceptor(client.internalCache()));
+    interceptors.add(new ConnectInterceptor(client));
+    if (!forWebSocket) {
+      interceptors.addAll(client.networkInterceptors());
+    }
+    interceptors.add(new CallServerInterceptor(forWebSocket));
+
+    Interceptor.Chain chain = new RealInterceptorChain(interceptors, null, null, null, 0,
+        originalRequest, this, eventListener, client.connectTimeoutMillis(),
+        client.readTimeoutMillis(), client.writeTimeoutMillis());
+
+    return chain.proceed(originalRequest);
+  }
