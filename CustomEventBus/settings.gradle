@@ -1,0 +1,5 @@
+include ':EventBus'
+include ':EventbusCompiler'
+include ':EventbusAnnotation'
+include ':app'
+rootProject.name = "CustomEventBus"
