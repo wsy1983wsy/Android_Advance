@@ -9,8 +9,10 @@ import com.wsy.database.annotation.DbField;
 import com.wsy.database.annotation.DbTable;
 
 import java.lang.reflect.Field;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -181,6 +183,118 @@ public class BaseDao<T> implements IBaseDao<T> {
             }
         }
         return contentValues;
+    }
+
+    @Override
+    public long update(T entity, T where) {
+        // 将传进来的对象 将成员变量和成员变量的值 转为map
+        Map map = getValues(entity);
+        ContentValues values = getContentValues(map);
+        Map whereMap = getValues(where);
+        Condition condition = new Condition(whereMap);
+        return sqLiteDatabase.update(tableName, values, condition.whereCause, condition.whereArgs);
+    }
+
+    @Override
+    public int delete(T where) {
+        Map map = getValues(where);
+        Condition condition = new Condition(map);
+        return sqLiteDatabase.delete(tableName, condition.whereCause, condition.whereArgs);
+    }
+
+    @Override
+    public List<T> query(T where) {
+        return query(where, null, null, null);
+    }
+
+
+    @Override
+    public List<T> query(T where, String orderBy, Integer startIndex, Integer limit) {
+        Map map = getValues(where);
+        // select * from tableName  limit 0,10;
+        String limitString = null;
+        if (startIndex != null && limit != null) {
+            limitString = startIndex + " , " + limit;
+        }
+//        String seclections = "where 1=1 and id=? and name=?";
+//        String selectionArgs = String[]{,""};
+        // select * from tableName where id=? and name=?
+        Condition condition = new Condition(map);
+        Cursor cursor = sqLiteDatabase.query(tableName, null, condition.whereCause, condition.whereArgs, null, null,
+                orderBy, limitString);
+        // 定义一个解析游标的方法
+        List<T> result = getResult(cursor, where);
+        return result;
+    }
+
+    private List<T> getResult(Cursor cursor, T obj) {
+        ArrayList list = new ArrayList();
+        Object item = null;// User user = null;
+        while (cursor.moveToNext()) {
+            try {
+                item = obj.getClass().newInstance(); // user = new User(); user.setId(cursor.getId);
+                Iterator iterator = cacheMap.entrySet().iterator();// 成员变量
+                while (iterator.hasNext()) {
+                    Map.Entry entry = (Map.Entry) iterator.next();
+                    // 获取列名
+                    String columnName = (String) entry.getKey();
+                    // 以列名拿到列名在游标中的位置
+                    Integer columnIndex = cursor.getColumnIndex(columnName);
+                    // 获取成员变量的类型
+                    Field field = (Field) entry.getValue();
+                    Class type = field.getType();
+                    // cursor.getString(columnIndex);
+                    if (columnIndex != -1) {
+                        if (type == String.class) {
+                            // User user = new User
+                            // user.setId(1);  id.set(user,1);
+                            field.set(item, cursor.getString(columnIndex));
+                        } else if (type == Double.class) {
+                            field.set(item, cursor.getDouble(columnIndex));
+                        } else if (type == Integer.class) {
+                            field.set(item, cursor.getInt(columnIndex));
+                        } else if (type == Long.class) {
+                            field.set(item, cursor.getLong(columnIndex));
+                        } else if (type == byte[].class) {
+                            field.set(item, cursor.getBlob(columnIndex));
+                        } else {
+                            continue;
+                        }
+                    }
+                }
+                list.add(item);
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();
+            } catch (InstantiationException e) {
+                e.printStackTrace();
+            }
+        }
+        cursor.close();
+        return list;
+    }
+
+    private class Condition {
+        private String whereCause;
+        private String[] whereArgs;
+
+        public Condition(Map<String, String> whereMap) {
+            ArrayList list = new ArrayList();
+            StringBuilder stringBuilder = new StringBuilder();
+            stringBuilder.append("1=1");
+            // 获取所有的字段名
+            Set keys = whereMap.keySet();
+            Iterator iterator = keys.iterator();
+            while (iterator.hasNext()) {
+                String key = (String) iterator.next();
+                String value = whereMap.get(key);
+                if (value != null) {
+                    stringBuilder.append(" and " + key + " =?");
+                    list.add(value);
+                }
+            }
+            this.whereCause = stringBuilder.toString();
+            this.whereArgs = (String[]) list.toArray(new String[list.size()]);
+        }
     }
 
 }
