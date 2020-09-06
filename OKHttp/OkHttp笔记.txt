@@ -1,0 +1,25 @@
+1、OSI 七层模型， TCP/IP模型，HTTP格式
+    OSI七层模型---->TCP/IP参考模型
+    TCP/IP参考模型，四层：
+        应用层----->HTTP HTTPS ...
+        传输层----->Socket
+2、OKHTTP使用
+OKHttpClient 通过Builder创建
+Request 创建request
+RealCall implements Call
+realCall.enqueue(new Call(){
+synchronized (this) {
+      if (executed) throw new IllegalStateException("Already Executed");
+      executed = true;
+}
+
+
+
+梳理主线流程：
+OkHttpClient --->Request -->newCall RealCall.enqueue(){不能重复读} ---> Dispatcher.enqueue(AsyncCall)
+--->Dispatcher{if: 先加入运行队列里面，执行异步任务 else: 直接加入等待队列} --->异步任务 ---->AsyncCall execute{}
+--->责任链模式 多个拦截器 ---->response
+
+
+
+线程池：
