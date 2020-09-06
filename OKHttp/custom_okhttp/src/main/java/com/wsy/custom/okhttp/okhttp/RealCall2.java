@@ -10,6 +10,10 @@ public class RealCall2 implements Call2 {
     private OkHttpClient2 okHttpClient2;
     private Request2 request2;
 
+    public OkHttpClient2 getOkHttpClient2() {
+        return okHttpClient2;
+    }
+
     public RealCall2(OkHttpClient2 okHttpClient2, Request2 request2) {
         this.okHttpClient2 = okHttpClient2;
         this.request2 = request2;
