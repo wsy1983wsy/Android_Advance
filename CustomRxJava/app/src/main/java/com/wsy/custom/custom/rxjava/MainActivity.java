@@ -24,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
     public void r01(View view) {
         // 起点 被观察者
         Observable.create(new ObservableOnSubscribe<Integer>() {
+            //ObservableEmitter<Integer> e 发射器
             @Override
             public void subscribe(ObservableEmitter<Integer> e) throws Exception {
 
@@ -89,6 +90,10 @@ public class MainActivity extends AppCompatActivity {
             }
         };
         observable.subscribe(observer);
+
+    }
+
+    public void r03(View view) {
 
     }
 
