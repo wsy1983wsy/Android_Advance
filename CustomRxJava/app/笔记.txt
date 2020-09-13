@@ -52,3 +52,24 @@ All: 如同 if 那样的功能 ：全部为true，才是true，只要有一个�
 contains 是否包含
 any 全部为 false，才是false， 只要有一个为true，就是true
 如果使用了条件操作符，下一层，接收的类型 就是条件类型(Boolean)
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+07.RxJava合并型操作符。
+两个或者多个 被观察者 合并。
+1.startWait，concatWith ：先创建被观察者，然后再组合其他的被观察者，然后再订阅
+2.concat/merge/zip：直接合并多个被观察者，然后订阅
+细节：
+a:startWait 先执行 startWait括号里面的被观察者
+b:concatWait 后执行 concatWait括号里面的被观察者
+c:concat 是按照顺序依次执行 最多四个被观察者进行合并
+d:merge 并列执行的，（演示并列的执行，所以学了intervalRange） 最多四个被观察者进行合并
+e:zip 需要对应关系 需要对应，如果不对应，会被忽略的， 最多9个被观察者 进行合并
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+08.RxJava异常处理操作符。
+1.RxJava中是不标准的throw new IllegalAccessError("我要报错了");
+2. RxJava标准的e.onError(XXX);
+3.onErrorReturn最先拦截到e.onError并且可以给下游返回一个 标识400,   throw new  XXX 拦截不到，整个程序奔溃
+4.onErrorResumeNext最先拦截到e.onError并且可以给下游返回一个 被观察者（还可以再次发送）,   throw new  XXX 拦截不到，整个程序奔溃
+5.onExceptionResumeNext 能在发生异常的时候，扭转乾坤，能够处理 throw new  XXX，可以真正的让App不奔溃
+6.retry return false; 代表不去重试  return true; 不停的重试，  演示二 重试次数，  演示三 打印重试了多少次，计数
