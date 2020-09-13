@@ -16,6 +16,7 @@ public class Observable<T> { // 类声明的泛型T  Int
 
     // new Observable<T>(source).subscribe(Observer<Int>)
     public void subscribe(Observer<T> observer) {
-
+        observer.onSubscribe();
+        source.subscribe(observer);
     }
 }
