@@ -38,6 +38,9 @@
             <!--            </intent-filter>-->
         </activity>
         <activity android:name=".MainActivity5">
+
+        </activity>
+        <activity android:name=".retrofit_okhttp.TestActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
