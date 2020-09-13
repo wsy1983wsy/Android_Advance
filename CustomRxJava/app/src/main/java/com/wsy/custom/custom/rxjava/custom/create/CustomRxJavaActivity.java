@@ -16,7 +16,7 @@ public class CustomRxJavaActivity extends Activity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_custom_rxjava);
-        Observable.create(new ObservableOnSubscribe<Integer>() {
+       /* Observable.create(new ObservableOnSubscribe<Integer>() {
             @Override
             public void subscribe(Observer<? super Integer> observableEmitter) {
                 observableEmitter.onNext(1);
@@ -45,6 +45,28 @@ public class CustomRxJavaActivity extends Activity {
                 Log.d(TAG, "onComplete");
 
             }
-        });
+        });*/
+        Observable.just("A", "B", "C")
+                .subscribe(new Observer<String>() {
+                    @Override
+                    public void onSubscribe() {
+
+                    }
+
+                    @Override
+                    public void onNext(String item) {
+                        Log.d(TAG, "onNext : " + item);
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
     }
 }
