@@ -1,2 +1,3 @@
+include ':injectlayout'
 include ':app'
 rootProject.name = "CustomDagger"
